@@ -1,16 +1,26 @@
 <template>
   <header>
-    <router-link v-if="isBuy" class="link" to="/">⇠ 繼續選購</router-link>
+    <router-link v-if="isBuy" class="link" to="/">
+      <font-awesome-icon :icon="['fas', 'arrow-circle-left']" />繼續選購
+    </router-link>
     <div>
-      🛒 購物車
-      <span class="number">{{foods}}</span>
+      購物車
+      <span class="number">
+        <font-awesome-icon :icon="['fas', 'shopping-cart']" />
+        {{foods}}
+      </span>
     </div>
     <div>
-      總金額 💲
-      <span class="number">{{price}}</span>
-      <span>{{link}}</span>
+      總金額
+      <span class="number">
+        <font-awesome-icon :icon="['fas', 'dollar-sign']" />
+        {{price}}
+      </span>
     </div>
-    <router-link v-if="isChecked" class="link" to="/cartcheck">前往結帳 ⇢</router-link>
+    <router-link v-if="isChecked" class="link" to="/cartcheck">
+      前往結帳
+      <font-awesome-icon :icon="['fas', 'arrow-circle-right']" />
+    </router-link>
   </header>
 </template>
 

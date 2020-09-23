@@ -1,19 +1,18 @@
 <template>
   <div class="cart-check">
-    <CartFood />
-    <CartFood />
-    <CartFood />
-    <CartFood />
-    <CartFood />
-    <CartFood />
+    <CartFood v-for="cart in carts" :key="cart.id" :cart="cart" />
   </div>
 </template>
 
 <script>
 import CartFood from './components/CartFood';
+import { mapState } from 'vuex';
 export default {
   components: {
     CartFood,
+  },
+  computed: {
+    ...mapState(['carts']),
   },
 };
 </script>

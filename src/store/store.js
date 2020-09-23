@@ -6,21 +6,23 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     foods: [],
-    cart: [],
+    carts: [],
   },
   getters: {
     foodsInCart(state) {
-      return state.cart.length;
+      return state.carts.reduce((acc, cur) => {
+        return acc + cur.quantity;
+      }, 0);
     },
     priceInCart(state) {
-      return state.cart.reduce((accumulator, food) => {
-        return accumulator + food.price;
+      return state.carts.reduce((acc, cur) => {
+        return acc + cur.price * cur.quantity;
       }, 0);
     },
     isFoodInCart(state) {
       return food => {
         return (
-          state.cart.findIndex(({ id }) => {
+          state.carts.findIndex(({ id }) => {
             return id === food.id;
           }) !== -1
         );
@@ -32,7 +34,14 @@ export default new Vuex.Store({
       state.foods = foods;
     },
     addToCart(state, food) {
-      state.cart.push(food);
+      state.carts.push({ ...food, quantity: 1 });
+    },
+    changeQuantity(state, cart) {
+      if (cart.condition === 'plus') {
+        state.carts.find(elem => elem.id === cart.id).quantity++;
+      } else if (cart.condition === 'minus') {
+        state.carts.find(elem => elem.id === cart.id).quantity--;
+      }
     },
   },
   actions: {
