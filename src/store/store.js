@@ -46,6 +46,10 @@ export default new Vuex.Store({
         food.quantity--;
       }
     },
+    removeFood(state, id) {
+      const index = state.carts.findIndex(elem => elem.id === id);
+      state.carts.splice(index, 1);
+    },
   },
   actions: {
     getFoods({ commit }) {
