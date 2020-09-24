@@ -52,6 +52,7 @@ header {
   justify-content: space-around;
   align-items: center;
   font-size: 1rem;
+  color: #333;
 }
 .number {
   color: #fffb7a;

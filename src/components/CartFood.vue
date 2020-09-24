@@ -65,6 +65,9 @@ export default {
 .food-quantity {
   flex: 2;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   > button {
     border: none;
     border-radius: 50%;
@@ -78,6 +81,7 @@ export default {
 .food-price {
   flex: 1;
   text-align: right;
+  color: #ffa33b;
   > span {
     margin-left: 1rem;
   }
