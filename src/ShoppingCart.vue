@@ -28,6 +28,7 @@ html {
   width: 100%;
   height: 100%;
   font-size: calc(0.75em + 1vmin);
+  font-family: 'Noto Sans TC', sans-serif;
 }
 </style>
 <style lang="scss" scoped>
