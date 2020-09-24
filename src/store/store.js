@@ -37,10 +37,13 @@ export default new Vuex.Store({
       state.carts.push({ ...food, quantity: 1 });
     },
     changeQuantity(state, cart) {
+      const food = state.carts.find(elem => elem.id === cart.id);
+      if (food.quantity < 0) return;
       if (cart.condition === 'plus') {
-        state.carts.find(elem => elem.id === cart.id).quantity++;
+        food.quantity++;
       } else if (cart.condition === 'minus') {
-        state.carts.find(elem => elem.id === cart.id).quantity--;
+        if (food.quantity === 0) return;
+        food.quantity--;
       }
     },
   },
